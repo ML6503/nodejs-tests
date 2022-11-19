@@ -1,0 +1,23 @@
+{
+  "name": "nodejs-tests",
+  "version": "1.0.0",
+  "description": "Node.js test runner",  
+  "type": "module",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "node --test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ML6503/nodejs-tests.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ML6503/nodejs-tests/issues"
+  },
+  "homepage": "https://github.com/ML6503/nodejs-tests#readme"
+}
