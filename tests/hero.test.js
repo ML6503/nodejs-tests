@@ -1,11 +1,17 @@
-import { test, describe, mock } from 'node:test';
+import { test, describe, mock, after } from 'node:test';
 import assert from 'node:assert';
 import myHero from '../tasks/hero.mjs';
 
 describe('Hero can be chosen randomly with relevant quote', () => {
+  after(() => {
+    mock.reset();
+  });
+
   let randomDice;
+
   test('When randomDice is mocked to show 1 we get character Yoda and his quote', async () => {
     randomDice = mock.fn(() => 1);
+
     const myCharacter = await myHero.getHero();
     const expectedHero = 'Yoda';
 
@@ -19,6 +25,7 @@ describe('Hero can be chosen randomly with relevant quote', () => {
 
   test('When randomDice is mocked to show 0 we get character Darth Vader and his quote', async () => {
     randomDice = mock.fn(() => 0);
+
     const myCharacter = await myHero.getHero();
     const expectedHero = 'Darth Vader';
 
@@ -29,6 +36,4 @@ describe('Hero can be chosen randomly with relevant quote', () => {
 
     assert(heroSays, expectedHeroQuote);
   });
-
-  mock.reset();
 });
