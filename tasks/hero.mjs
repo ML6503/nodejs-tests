@@ -5,8 +5,8 @@ class MyHero {
     this.hero;
   }
 
-  async getHero(randomChoice = randomDice) {
-    const character = randomChoice === 0 ? 'Darth Vader' : 'Yoda';
+  async getHero() {
+    const character = randomDice === 0 ? 'Darth Vader' : 'Yoda';
     this.returnHero(character);
     return character;
   }

@@ -3,10 +3,10 @@ import assert from 'node:assert';
 import myHero from '../tasks/hero.mjs';
 
 describe('Hero can be chosen randomly with relevant quote', () => {
-  let mockedRrandomDice;
-  test('When dice shows 1 we get character Yoda and his quote', async () => {
-    mockedRrandomDice = mock.fn(() => 1);
-    const myCharacter = await myHero.getHero(mockedRrandomDice);
+  let randomDice;
+  test('When randomDice is mocked to show 1 we get character Yoda and his quote', async () => {
+    randomDice = mock.fn(() => 1);
+    const myCharacter = await myHero.getHero();
     const expectedHero = 'Yoda';
 
     assert(myCharacter, expectedHero);
@@ -17,9 +17,9 @@ describe('Hero can be chosen randomly with relevant quote', () => {
     assert(heroSays, expectedHeroQuote);
   });
 
-  test('When dice shows 0 we get character Darth Vader and his quote', async () => {
-    mockedRrandomDice = mock.fn(() => 0);
-    const myCharacter = await myHero.getHero(mockedRrandomDice);
+  test('When randomDice is mocked to show 0 we get character Darth Vader and his quote', async () => {
+    randomDice = mock.fn(() => 0);
+    const myCharacter = await myHero.getHero();
     const expectedHero = 'Darth Vader';
 
     assert(myCharacter, expectedHero);
@@ -29,24 +29,6 @@ describe('Hero can be chosen randomly with relevant quote', () => {
 
     assert(heroSays, expectedHeroQuote);
   });
+
+  mock.reset();
 });
-
-// class MyHero {
-//   constructor() {
-//     this.hero = getHero();
-//   }
-
-//   async getHero() {
-//     const character = randomDice === 0 ? 'Darth Vader' : 'Yoda';
-//     return character;
-//   }
-
-//   async getQuote() {
-//     const quote =
-//       this.hero === 'Yoda'
-//         ? 'You must unlearn what you have learned'
-//         : 'Be careful not to chock onyour aspiratons';
-
-//     return quote;
-//   }
-// }
